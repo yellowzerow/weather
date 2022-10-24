@@ -45,6 +45,7 @@ public class DiaryController {
         return diaryService.readDairies(startDate, endDate);
     }
 
+    @ApiOperation("일기를 수정할 수 있습니다.")
     @PutMapping("/update/diary")
     void updateDiary(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
@@ -52,7 +53,8 @@ public class DiaryController {
     ) {
         diaryService.updateDiary(date, text);
     }
-
+    
+    @ApiOperation("일기를 삭제할 수 있습니다.")
     @DeleteMapping("/delete/diary")
     void deleteDiary(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
